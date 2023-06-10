@@ -6,12 +6,15 @@ db = pymysql.connect(host='localhost',
 					password='',
 					database='belajar_python')
 
-# Prepare a cursor object using cursor() method
+def gerVersion():
+	cursor = db.cursor()
+	cursor.execute("SELECT VERSION()")
+	data = cursor.fetchone()
 
-cursor = db.cursor()
+	print("Database version : %s " % data)
+	
+def getCursor():
+	return db.cursor()
 
-cursor.execute("SELECT VERSION()")
-
-data = cursor.fetchone()
-
-print("Database version : %s " % data)
+def getDB():
+	return db
