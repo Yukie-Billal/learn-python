@@ -9,3 +9,6 @@ print(integer,type(integer),float,type(float),string,type(string),bool, type(boo
 
 nilai_complex = complex(10, 2)
 print(nilai_complex)
+
+# iterable object
+print(list("Yukie"))
