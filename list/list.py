@@ -1,5 +1,4 @@
-# FOR NOTE list is array in javascript
-
+# FOR NOTE list is same like array in javascript
 list1 = ["Yukie","Muhammad","Billal"]
 list2 = ["Yukie", 18, '2004', 165.5 , False]
 list3 = ["Y", "U", "K", "I", "E"]
@@ -23,3 +22,12 @@ if len(list3) >= 0:
 	print(['Hai'] * 4)
 
 print("U" in list3)
+
+list_with_for = [i for i in range(0,10)]
+print(list_with_for)
+list_with_for = [i**2 for i in range(0,10)]
+print(list_with_for)
+list_with_for = [i for i in range(0,10) if i != 5]
+print(list_with_for)
+list_with_for = [i for i in range(0,10) if i%2 != 0]
+print(list_with_for)
