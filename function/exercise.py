@@ -18,10 +18,10 @@ def input_user():
 	panjang = int(input("Masukkan nilai panjang\t: "))
 	return menu, lebar, panjang
 
-def hitung_luas(lebar, panjang):
+def hitung_luas(lebar:int, panjang:int) -> int :
 	return lebar * panjang
 
-def hitung_keliling(lebar, panjang):
+def hitung_keliling(lebar:int, panjang:int) -> int:
 	return 2*(panjang+lebar)
 
 def show(message, value):
