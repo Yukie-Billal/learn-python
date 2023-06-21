@@ -30,27 +30,40 @@ def convert_int(a, b) :
     return int(a), int(b)
 
 def tambah_btn() : 
-    num1, num2 = convert_int(NUM1.get(),NUM2.get())
-    output = num1 + num2
-    print(f"{num1} + {num2} = {output}")
-    showinfo(title="HASIL",message=f"{num1} + {num2} = {output}")
+    event_button("+")
 
 def kali_btn() :
-    num1, num2 = convert_int(NUM1.get(),NUM2.get())
-    output = num1*num2
-    print(f"{num1} * {num2} = {output}")
-    showinfo(title="HASIL",message=f"{num1} * {num2} = {output}")
+    event_button("*")
 
 def bagi_btn() :
-    num1, num2 = convert_int(NUM1.get(),NUM2.get())
-    output = num1/num2
-    print(f"{num1} / {num2} = {output}")
-    showinfo(title="HASIL",message=f"{num1} / {num2} = {output}")
+    event_button("/")
+    
 def kurang_btn() :
+    event_button("-")
+
+def getOutput(num1, num2, operator) :
+    if operator =="+":
+        return f"Hasil {num1} {operator} {num2} = {num1 + num2}"
+    elif operator == "-" :
+        return f"Hasil {num1} {operator} {num2} = {num1 - num2}"
+    elif operator == "*" :
+        return f"Hasil {num1} {operator} {num2} = {num1 * num2}"
+    elif operator == "/" :
+        return f"Hasil {num1} {operator} {num2} = {num1 / num2}"
+    else :
+        return f"Input Salah. Silahkan Masukkan sekali lagi.."
+
+def event_button(operator) :
     num1, num2 = convert_int(NUM1.get(),NUM2.get())
-    output = num1-num2
-    print(f"{num1} - {num2} = {output}")
-    showinfo(title="HASIL",message=f"{num1} - {num2} = {output}")
+    hasil = getOutput(num1,num2, operator)
+    showinfo(title="HASIL",message=hasil)
+
+button_dict = {
+    "Tambah (+)" : tambah_btn,
+    "kurang (-)" : kurang_btn,
+    "kali (*)" : kali_btn,
+    "bagi (/)" : bagi_btn
+}
 
 # frame
 main_frame = ttk.Frame(window)
@@ -62,7 +75,6 @@ title_label = ttk.Label(main_frame,text="Kalkulator Sederhana")
 title_label.pack(padx=20,pady=20,fill="x",expand=True)
 title_label.configure(font="300px")
 
-
 # 2. first number
 make_input_label("Bilangan Pertama")
 make_input_entry(NUM1)
@@ -72,9 +84,8 @@ make_input_label("Bilangan Kedua")
 make_input_entry(NUM2)
 
 make_input_label("Pilih Operator")
-make_button_component("Tambah ( + )",tambah_btn)
-make_button_component("Kurang ( - )",kurang_btn)
-make_button_component("Kali ( * )",kali_btn)
-make_button_component("Bagi ( / )",bagi_btn)
+
+for item in button_dict.items() :
+    make_button_component(item[0],item[1])
 
 window.mainloop()
