@@ -41,6 +41,11 @@ def bagi_btn() :
 def kurang_btn() :
     event_button("-")
 
+def event_button(operator) :
+    num1, num2 = convert_int(NUM1.get(),NUM2.get())
+    hasil = getOutput(num1,num2, operator)
+    showinfo(title="HASIL",message=hasil)
+    
 def getOutput(num1, num2, operator) :
     if operator =="+":
         return f"Hasil {num1} {operator} {num2} = {num1 + num2}"
@@ -52,11 +57,6 @@ def getOutput(num1, num2, operator) :
         return f"Hasil {num1} {operator} {num2} = {num1 / num2}"
     else :
         return f"Input Salah. Silahkan Masukkan sekali lagi.."
-
-def event_button(operator) :
-    num1, num2 = convert_int(NUM1.get(),NUM2.get())
-    hasil = getOutput(num1,num2, operator)
-    showinfo(title="HASIL",message=hasil)
 
 button_dict = {
     "Tambah (+)" : tambah_btn,
